@@ -1,9 +1,14 @@
+using UnityEngine;
+
 public class StateMove : State
 {
     /// <summary>
     /// 생성자
     /// </summary>
-    public StateMove(StateMachine machine, Unit unit) : base(machine, unit) { }
+    public StateMove(StateMachine machine, Unit unit) : base(machine, unit)
+    {
+        TransStates.Add(new StateAttack(machine, unit));
+    }
 
     /// <summary>
     /// 상태 판단
@@ -16,6 +21,8 @@ public class StateMove : State
             return true;
         }
         
+        UpdateState();
+        
         return false;
     }
 
@@ -24,6 +31,7 @@ public class StateMove : State
     /// </summary>
     public override void Execute()
     {
+        Debug.Log("Move 상태 실행");
         unit.Move();
     }
 }

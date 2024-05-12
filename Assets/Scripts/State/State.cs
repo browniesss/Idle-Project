@@ -26,4 +26,16 @@ public abstract class State
     /// 상태에 맞는 행동 실행
     /// </summary>
     public abstract void Execute();
+
+    public virtual void UpdateState()
+    {
+        foreach (var state in TransStates)
+        {
+            if (state.Judge())
+            {
+                machine.currentState = state;
+                break;
+            }
+        }
+    }
 }

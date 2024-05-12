@@ -28,7 +28,7 @@ public abstract class Unit : MonoBehaviour
     /// <summary>
     /// 공격할 타겟 탐색
     /// </summary>
-    public abstract void SearchTarget();
+    public abstract bool SearchTarget();
 
     /// <summary>
     /// 이동 처리
@@ -39,4 +39,12 @@ public abstract class Unit : MonoBehaviour
     /// 타겟이 공격 범위안으로 들어왔는지 여부 반환
     /// </summary>
     public abstract bool IsTargetInRange();
+
+    /// <summary>
+    /// Die 처리 여부 반환
+    /// </summary>
+    public virtual bool IsDie()
+    {
+        return hp <= 0;
+    }
 }
